@@ -50,12 +50,15 @@ const ExportButtons: React.FC<ExportButtonsProps> = ({ style }) => {
   };
 
   return (
-    <div ref={buttonsRef} className="flex justify-center flex-wrap gap-3 mb-6">
+    <div
+      ref={buttonsRef}
+      className="flex justify-center flex-wrap gap-4 gap-x-8 md:gap-3 md:mb-6"
+    >
       <button
         onClick={(e) =>
           handleButtonClick(() => exportToJSON(style), e.currentTarget)
         }
-        className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+        className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 transition-colors text-sm md:text-base"
       >
         <FiDownload size={16} />
         Export JSON
@@ -64,7 +67,7 @@ const ExportButtons: React.FC<ExportButtonsProps> = ({ style }) => {
         onClick={(e) =>
           handleButtonClick(() => exportToCSS(style), e.currentTarget)
         }
-        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+        className="bg-green-600 hover:bg-green-700 text-white px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 transition-colors text-sm md:text-base"
       >
         <FiDownload size={16} />
         Export CSS
@@ -73,7 +76,7 @@ const ExportButtons: React.FC<ExportButtonsProps> = ({ style }) => {
         onClick={(e) =>
           handleButtonClick(() => exportToHTML(style), e.currentTarget)
         }
-        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+        className="bg-blue-600 hover:bg-blue-700 text-white px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 transition-colors text-sm md:text-base"
       >
         <FiDownload size={16} />
         Export HTML
@@ -82,7 +85,7 @@ const ExportButtons: React.FC<ExportButtonsProps> = ({ style }) => {
         onClick={(e) =>
           handleButtonClick(() => copyStyle(style), e.currentTarget)
         }
-        className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+        className="bg-gray-600 hover:bg-gray-700 text-white px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 transition-colors text-sm md:text-base"
       >
         <FiCopy size={16} />
         Copy Style

@@ -10,7 +10,7 @@ import SegmentSection from "./SegmentSection";
 
 const HeadlineStyler: React.FC = () => {
   const [style, setStyle] = useState<TextStyle>({
-    text: "Your Amazing Headlines That Capture Attention and Inspire Action",
+    text: "Your Amazing Headlines That Capture Attention",
     fontFamily: "Inter",
     fontWeight: "700",
     fontSize: 48,
@@ -45,23 +45,40 @@ const HeadlineStyler: React.FC = () => {
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
       <div className="flex flex-col lg:flex-row lg:h-screen">
         {/* Preview Section */}
-        <div className="lg:w-1/2 p-4 lg:p-6 flex flex-col">
-          <div className="min-h-[300px] lg:flex-1">
-            <PreviewSection style={style} />
+        <div className="lg:w-1/2 md:p-4 lg:p-6 flex flex-col">
+          <PreviewSection style={style} />
+
+          {/* Desktop Export Buttons */}
+          <div className="hidden md:block">
+            <ExportButtons style={style} />
           </div>
-          <ExportButtons style={style} />
         </div>
 
         {/* Settings Panel */}
         <div className="lg:w-1/2 bg-gray-50 dark:bg-gray-800 lg:overflow-auto">
+          {/* Mobile spacer for fixed preview */}
+          <div className="md:hidden h-[280px]" />
+
+          {/* Scrollable Content Area */}
           <div className="p-4 lg:p-6">
-            <div className="space-y-6">
+            {/* Mobile Export Buttons - Scrollable with content */}
+            <div className="md:hidden mb-8">
+              <div className="bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+                <ExportButtons style={style} />
+              </div>
+            </div>
+
+            {/* Settings Sections */}
+            <div className="space-y-8">
               <ContentSection style={style} updateStyle={updateStyle} />
               <TypographySection style={style} updateStyle={updateStyle} />
               <ColorsSection style={style} updateStyle={updateStyle} />
               <EffectsSection style={style} updateStyle={updateStyle} />
               <SegmentSection style={style} updateStyle={updateStyle} />
             </div>
+
+            {/* Bottom padding for mobile scrolling */}
+            <div className="md:hidden h-20" />
           </div>
         </div>
       </div>

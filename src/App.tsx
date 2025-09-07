@@ -1,12 +1,8 @@
-import React from 'react'
+import React from "react";
+import HeadlineStyler from "./components/HeadlineStyler";
 
 function App() {
-
-  return (
-    <div>
-      App
-    </div>
-  )
+  return <HeadlineStyler />;
 }
 
-export default App
+export default App;

@@ -5,6 +5,8 @@ import ExportButtons from "./ExportButtons";
 import ContentSection from "./ContentSection";
 import TypographySection from "./TypographySection";
 import ColorsSection from "./ColorsSection";
+import EffectsSection from "./EffectsSection";
+import SegmentSection from "./SegmentSection";
 
 const HeadlineStyler: React.FC = () => {
   const [style, setStyle] = useState<TextStyle>({
@@ -14,9 +16,25 @@ const HeadlineStyler: React.FC = () => {
     fontSize: 48,
     enableGradient: false,
     textColor: "#0046FF",
-    gradientStart: "#6366f1",
-    gradientEnd: "#8b5cf6",
+    gradientStart: "#42d392",
+    gradientEnd: "#647eff",
     gradientDirection: "to right",
+    // Modern Effects
+    enableFadeIn: false,
+    fadeInDuration: 1000,
+    enableHoverGlow: false,
+    glowColor: "#0046FF",
+    glowIntensity: 10,
+    enableLetterAnimation: false,
+    letterAnimationType: "bounce",
+    letterAnimationDelay: 100,
+    letterAnimationPattern: "leftToRight",
+    textShadow: "none",
+    textShadowColor: "rgba(0,0,0,0.3)",
+    textOutline: "none",
+    textOutlineColor: "#000000",
+    // Segment Styling
+    segments: [],
   });
 
   const updateStyle = (key: keyof TextStyle, value: any) => {
@@ -41,6 +59,8 @@ const HeadlineStyler: React.FC = () => {
               <ContentSection style={style} updateStyle={updateStyle} />
               <TypographySection style={style} updateStyle={updateStyle} />
               <ColorsSection style={style} updateStyle={updateStyle} />
+              <EffectsSection style={style} updateStyle={updateStyle} />
+              <SegmentSection style={style} updateStyle={updateStyle} />
             </div>
           </div>
         </div>

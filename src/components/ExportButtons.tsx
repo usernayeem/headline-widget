@@ -50,7 +50,7 @@ const ExportButtons: React.FC<ExportButtonsProps> = ({ style }) => {
   };
 
   return (
-    <div ref={buttonsRef} className="flex flex-wrap gap-3 mb-6">
+    <div ref={buttonsRef} className="flex justify-center flex-wrap gap-3 mb-6">
       <button
         onClick={(e) =>
           handleButtonClick(() => exportToJSON(style), e.currentTarget)

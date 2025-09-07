@@ -10,6 +10,33 @@ const ColorsSection: React.FC<ColorsSectionProps> = ({
   style,
   updateStyle,
 }) => {
+  const gradientDirections = [
+    {
+      value: "to right",
+      icon: "→",
+      label: "Right",
+      classes: "text-gray-700 dark:text-gray-200",
+    },
+    {
+      value: "to left",
+      icon: "←",
+      label: "Left",
+      classes: "text-gray-700 dark:text-gray-200",
+    },
+    {
+      value: "to bottom",
+      icon: "↓",
+      label: "Down",
+      classes: "text-gray-700 dark:text-gray-200",
+    },
+    {
+      value: "to top",
+      icon: "↑",
+      label: "Up",
+      classes: "text-gray-700 dark:text-gray-200",
+    },
+  ];
+
   return (
     <div className="mb-6">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
@@ -60,50 +87,43 @@ const ColorsSection: React.FC<ColorsSectionProps> = ({
         {style.enableGradient && (
           <>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                 Gradient Direction
               </label>
-              <div className="grid grid-cols-4 gap-2">
-                <button
-                  onClick={() => updateStyle("gradientDirection", "to right")}
-                  className={`p-3 rounded-lg border-2 transition-colors ${
-                    style.gradientDirection === "to right"
-                      ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900"
-                      : "border-gray-300 dark:border-gray-600 hover:border-gray-400"
-                  }`}
-                >
-                  →
-                </button>
-                <button
-                  onClick={() => updateStyle("gradientDirection", "to left")}
-                  className={`p-3 rounded-lg border-2 transition-colors ${
-                    style.gradientDirection === "to left"
-                      ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900"
-                      : "border-gray-300 dark:border-gray-600 hover:border-gray-400"
-                  }`}
-                >
-                  ←
-                </button>
-                <button
-                  onClick={() => updateStyle("gradientDirection", "to bottom")}
-                  className={`p-3 rounded-lg border-2 transition-colors ${
-                    style.gradientDirection === "to bottom"
-                      ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900"
-                      : "border-gray-300 dark:border-gray-600 hover:border-gray-400"
-                  }`}
-                >
-                  ↓
-                </button>
-                <button
-                  onClick={() => updateStyle("gradientDirection", "to top")}
-                  className={`p-3 rounded-lg border-2 transition-colors ${
-                    style.gradientDirection === "to top"
-                      ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900"
-                      : "border-gray-300 dark:border-gray-600 hover:border-gray-400"
-                  }`}
-                >
-                  ↑
-                </button>
+              <div className="grid grid-cols-4 gap-3">
+                {gradientDirections.map((direction) => (
+                  <button
+                    key={direction.value}
+                    onClick={() =>
+                      updateStyle("gradientDirection", direction.value)
+                    }
+                    className={`relative p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center min-h-[60px] ${
+                      style.gradientDirection === direction.value
+                        ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 shadow-md"
+                        : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 hover:border-indigo-300 dark:hover:border-indigo-400 hover:bg-indigo-25 dark:hover:bg-indigo-900/10"
+                    }`}
+                    title={`Gradient ${direction.label}`}
+                  >
+                    <span
+                      className={`text-2xl font-bold mb-1 ${
+                        style.gradientDirection === direction.value
+                          ? "text-indigo-600 dark:text-indigo-400"
+                          : "text-gray-600 dark:text-gray-300"
+                      }`}
+                    >
+                      {direction.icon}
+                    </span>
+                    <span
+                      className={`text-xs font-medium ${
+                        style.gradientDirection === direction.value
+                          ? "text-indigo-600 dark:text-indigo-400"
+                          : "text-gray-500 dark:text-gray-400"
+                      }`}
+                    >
+                      {direction.label}
+                    </span>
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -151,6 +171,19 @@ const ColorsSection: React.FC<ColorsSectionProps> = ({
                   />
                 </div>
               </div>
+            </div>
+
+            {/* Gradient Preview */}
+            <div className="mt-4">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Gradient Preview
+              </label>
+              <div
+                className="w-full h-12 rounded-lg border border-gray-300 dark:border-gray-600"
+                style={{
+                  background: `linear-gradient(${style.gradientDirection}, ${style.gradientStart}, ${style.gradientEnd})`,
+                }}
+              />
             </div>
           </>
         )}

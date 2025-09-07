@@ -341,6 +341,20 @@ const PreviewSection: React.FC<PreviewSectionProps> = ({ style }) => {
   const renderTextContent = () => {
     const hasSegments = style.segments.length > 0;
 
+    // Get letter-specific styles for gradient + animation combination
+    const getLetterStyle = () => {
+      if (style.enableGradient && style.enableLetterAnimation) {
+        return {
+          background: `linear-gradient(${style.gradientDirection}, ${style.gradientStart}, ${style.gradientEnd})`,
+          WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          color: "transparent",
+        };
+      }
+      return {};
+    };
+
     if (hasSegments) {
       const textSegments = parseTextWithSegments(style);
       let letterIndex = 0;
@@ -351,7 +365,11 @@ const PreviewSection: React.FC<PreviewSectionProps> = ({ style }) => {
             ? segment.text.split("").map((char, charIndex) => {
                 const currentLetterIndex = letterIndex + charIndex;
                 return (
-                  <span key={currentLetterIndex} className="letter-animation">
+                  <span
+                    key={currentLetterIndex}
+                    className="letter-animation"
+                    style={getLetterStyle()}
+                  >
                     {char === " " ? "\u00A0" : char}
                   </span>
                 );
@@ -373,7 +391,11 @@ const PreviewSection: React.FC<PreviewSectionProps> = ({ style }) => {
             ? segment.text.split("").map((char, charIndex) => {
                 const currentLetterIndex = letterIndex + charIndex;
                 return (
-                  <span key={currentLetterIndex} className="letter-animation">
+                  <span
+                    key={currentLetterIndex}
+                    className="letter-animation"
+                    style={getLetterStyle()}
+                  >
                     {char === " " ? "\u00A0" : char}
                   </span>
                 );
@@ -389,7 +411,7 @@ const PreviewSection: React.FC<PreviewSectionProps> = ({ style }) => {
       });
     } else if (style.enableLetterAnimation) {
       return style.text.split("").map((char, index) => (
-        <span key={index} className="letter-animation">
+        <span key={index} className="letter-animation" style={getLetterStyle()}>
           {char === " " ? "\u00A0" : char}
         </span>
       ));

@@ -21,6 +21,7 @@ https://headline-widget-pro.netlify.app/
   - Hover glow effects
   - Dozens of per-letter animations with customizable patterns and delays
 - 🖋️ **Segment Styling**: Style specific words or segments with highlights, underlines, or backgrounds.
+- 🎯 **Quick Presets**: 9 professionally designed preset styles including Modern, Elegant, Bold, Gradient, Shadow, Retro, Neon Glow, Minimal, and Playful.
 - ⚡ **Real-Time Preview**: Animated headline preview using **GSAP**.
 - 📤 **Export Options**: Export your styled headline as:
   - JSON configuration

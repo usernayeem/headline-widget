@@ -33,6 +33,14 @@ export const getPreviewStyle = (style: TextStyle): React.CSSProperties => {
   }
 
   if (style.enableGradient) {
+    // It will be applied to individual letter spans instead
+    if (style.enableLetterAnimation) {
+      return {
+        ...baseStyle,
+        color: "transparent", // Fallback for non-webkit browsers
+      };
+    }
+
     return {
       ...baseStyle,
       background: `linear-gradient(${style.gradientDirection}, ${style.gradientStart}, ${style.gradientEnd})`,

@@ -312,16 +312,6 @@ const SegmentSection: React.FC<SegmentSectionProps> = ({
             ))}
           </div>
         )}
-
-        {style.segments.length === 0 && (
-          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-            <FiEdit3 size={48} className="mx-auto mb-3 opacity-50" />
-            <p>No segments created yet.</p>
-            <p className="text-sm">
-              Add text segments to apply special styling.
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );

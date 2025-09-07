@@ -7,6 +7,7 @@ import TypographySection from "./TypographySection";
 import ColorsSection from "./ColorsSection";
 import EffectsSection from "./EffectsSection";
 import SegmentSection from "./SegmentSection";
+import PresetsSection from "./PresetsSection";
 
 const HeadlineStyler: React.FC = () => {
   const [style, setStyle] = useState<TextStyle>({
@@ -39,6 +40,10 @@ const HeadlineStyler: React.FC = () => {
 
   const updateStyle = (key: keyof TextStyle, value: any) => {
     setStyle((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const applyPreset = (preset: TextStyle) => {
+    setStyle(preset);
   };
 
   return (
@@ -75,6 +80,7 @@ const HeadlineStyler: React.FC = () => {
               <ColorsSection style={style} updateStyle={updateStyle} />
               <EffectsSection style={style} updateStyle={updateStyle} />
               <SegmentSection style={style} updateStyle={updateStyle} />
+              <PresetsSection applyPreset={applyPreset} />
             </div>
 
             {/* Bottom padding for mobile scrolling */}
